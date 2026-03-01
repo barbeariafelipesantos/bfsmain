@@ -1,0 +1,694 @@
+*{
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    font-size: 62.5%;
+    --black01--: #000;
+    --black02--: #1b1b1b;
+    --black03--: #2b2b2b;
+    --white01--: #fff;
+    --white02--: #f2f2f2;
+    --gold01--: #FCC245;
+    --gold02--: #d4af37;
+}
+
+/* Começo da customização do Scroll */
+::-webkit-scrollbar{
+    background-color: transparent;
+    width: 0.2rem;
+}
+::-webkit-scrollbar-thumb{
+    background-color:   var(--white02--);
+}
+/* Fim da customização do Scroll */
+
+/* Horizontal scrollX scrollbar - match body */
+.scrollX{
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--white02--) transparent; /* Firefox */
+}
+.scrollX::-webkit-scrollbar{
+    height: 0.6rem;
+    background-color: transparent;
+}
+.scrollX::-webkit-scrollbar-thumb{
+    background-color: var(--white02--);
+    border-radius: 0.8rem;
+}
+.scrollX::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+body, html{
+    max-width: 100dvw;
+    width: 100%;
+    max-height: 100dvh;
+    height: 100%;
+    background-color: var(--black02--);
+    color: var(--white02--);
+    overflow: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
+}
+
+.content{
+    max-width: 1024px;
+    width: 100%;
+    margin: 9rem auto 0;
+    box-shadow: 0 0 20px 5px #000, inset 0 0 10px #000;
+    padding: 1rem 0 0;
+}
+
+header{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    font-size: 1.2rem;
+    background: #1B1B1B;
+    box-shadow: 0 0 15px 10px var(--black01--);
+    z-index: 10;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        h1 i{
+            transform: rotate(145deg) translateY(1.2rem);
+        }
+    }
+    p{
+        font-size: 1.6rem;
+        margin-top: 0.5rem;
+    }
+    img{
+        width: 5rem;
+        height: 5rem;
+    }
+}
+
+footer{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 6rem;
+    font-size: 1.6rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--black02--);
+    box-shadow: 0 0 20px 5px #000;
+    z-index:2 ;
+    a{
+        text-decoration: none;
+        color: var(--white02--);
+    }
+}
+
+/* Slider Styles */
+.barberSlider {
+    position: relative;
+    max-width: 100%;
+    margin: 0 1rem;
+    overflow: hidden;
+    border-radius: 1.6rem;
+    box-shadow: 0 0 15px 5px #000;
+}
+
+.slider-controls input {
+    display: none;
+}
+
+.slider-radio {
+    display: none;
+}
+
+.slides-container {
+    position: relative;
+    width: 100%;
+    height: 30rem;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #000;
+    
+    img{
+        width: 100%;
+        height: 100%;
+        border-radius: 1.6rem;
+        box-shadow: 0 0 15px 5px #000;
+        object-fit: cover;
+    }
+
+    h2{
+        font-size: 1.8rem;
+        position: absolute;
+        bottom: 2rem;
+        left: 1rem;
+        background-color: #00000063;
+        padding: 10px;
+        border-radius: .8rem;
+    }
+}
+
+.slide1{
+    background-image: url("./imgs/barbearia/barbearia\ \(1\).png");
+}
+
+.slide2{
+    background-image: url("./imgs/patrocinios/patrocionioespaços.jpeg");
+}
+
+.slide3{
+    background-image: url("./imgs/patrocinios/patrocioniocamisa.jpeg");
+}
+
+/* Show the slide when its checkbox is checked */
+#slide1:checked ~ .slides-container .slide1,
+#slide2:checked ~ .slides-container .slide2,
+#slide3:checked ~ .slides-container .slide3 {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* Slider dots/indicators */
+.slider-dots {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.8rem;
+    z-index: 2;
+}
+
+.dot {
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.dot:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+#slide1:checked ~ .slider-dots .dot1,
+#slide2:checked ~ .slider-dots .dot2,
+#slide3:checked ~ .slider-dots .dot3 {
+    background-color: var(--gold01--);
+    border-color: var(--white01--);
+}
+
+/* .fa-angle-down{
+    width: 100%;
+    text-align: center;
+    font-size: 2.4rem;
+    margin: 1.5rem 0;
+} */
+
+h2{
+    font-size: 2.2rem;
+    text-align: center;
+}
+
+.services{
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    gap: 1rem;
+    .servicesValues{
+        h2{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+    }
+}
+
+.tablePrice{
+    display: flex;
+    flex-direction: column;
+    max-width: 30rem;
+    margin: 0 auto;
+    h2{
+        margin: 0 auto;
+    }
+    h3{
+        font-size: 1.8rem;
+        margin: 0 auto 1rem;
+    }
+    table{
+        background-color: #2b2b2b;
+        border-radius: .8rem;
+        border: 1px solid var(--gold02--);
+        overflow: hidden;
+        padding: .5rem .5rem 0;
+        margin-bottom: 1rem;
+    }
+    tr{
+        font-size: 1.6rem;
+        text-align: center;
+        th{
+            text-align: center;
+            background-color: var(--gold02--);
+            border-radius: .8rem;
+            color: #000;
+            padding: .5rem;
+            font-size: 1.6rem;
+        }
+        td{
+            text-align: left;
+            padding: .5rem;
+            border-bottom: 1px solid var(--gold02--);
+        }
+        td:last-child{
+            text-align: center;
+            transform: translateX(-2px);
+        }
+    }
+    tr:last-child{
+        td{
+            border: none;
+        }
+    }
+}
+
+.mensalPlans{
+    display: flex;
+    gap: .5rem;
+    position: relative;
+    justify-content: center;
+    margin: 0 .5rem;
+    align-items: center;
+    h3{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        text-align: center;
+        font-size: 1.8rem;
+    }
+    .mensalPlanCard{
+        max-width: 20rem;
+        max-height: 18rem;
+        height: 18rem;
+        width: 100%;
+        margin-top: 2.5rem;
+        background-color: var(--black03--);
+        padding: 5rem .5rem 1rem;
+        position: relative;
+        font-size: 1.5rem;
+        border: 2px solid #ce8946;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1.4rem;
+        border-radius: .4rem;
+        transition: 0.5s;
+        h3{
+            background-color: #ce8946;
+            text-align: center;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            padding: 1rem;
+            font-size: 1.6rem;
+        }
+        strong{
+            background-color: silver;
+            border-radius: .8rem;
+            padding: .5rem;
+        }
+        span{
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        &:hover{
+            transform: scale(1.03);
+            box-shadow: 0 0 5px 1px silver;
+        }
+    }
+    .mensalPlanCard:nth-child(4){
+        h3{
+            background-color: #d4af37;
+        }
+        border: 2px solid #d4af37;
+        strong{
+            background-color: #d4af37;
+        }
+    }
+    .mensalPlanCard:nth-child(3){
+        h3{
+            background-color: silver;
+        }
+        border: 2px solid silver;
+    }
+}
+
+.hairCuts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 .5rem;
+    
+    h3{
+        font-size: 1.6rem;
+        width: 100%;
+        margin-top: 1rem;
+        text-align: center;
+    }
+    
+    .hairCutsCards{
+        /* Card base size */
+        .card{
+            display: flex;
+            border-radius: 0.8rem;
+            width: 18rem;
+            height: 18rem;
+            min-width: 18rem;
+            min-height: 18rem;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 2px solid var(--white02--);
+            cursor: pointer;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+
+            &:hover{
+                transform: scale(1.03);
+                box-shadow: 0 0 5px 1px var(--gold01--);
+                border: 2px solid var(--gold01--);
+            }
+
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+        }
+
+        /* Horizontal scroll variant */
+        &.scrollX{
+            display: flex;
+            width: 100%;
+            overflow-x: auto;
+            gap: 1rem;
+            padding: 1rem;
+            justify-content: flex-start;
+
+            .card{
+                flex: 0 0 auto;
+            }
+        }
+    }
+}
+
+/* Card Modal Styles */
+.card-modal {
+    /* always present so transitions can run on hide/show */
+    display: flex;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    pointer-events: none; /* blocked when hidden */
+    opacity: 0;
+    transition: opacity 360ms ease;
+}
+
+.card-modal.active {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+/* Modal appear/exit animation */
+/* (opacity handled above) */
+
+.modal-content {
+    position: relative;
+    width: min(90vw, 60rem);
+    height: min(90vh, 60rem);
+    border-radius: 1.6rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: transform 420ms cubic-bezier(.2,.8,.2,1), opacity 420ms ease;
+}
+.card-modal.active .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.modal-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Modal navigation buttons */
+.modal-btn{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(0,0,0,0.5);
+    color: var(--white01--);
+    font-size: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+}
+.modal-prev{ left: 1rem; }
+.modal-next{ right: 1rem; }
+.modal-btn:hover{ background-color: rgba(0,0,0,0.75); color: var(--gold01--); }
+
+/* scrollX dragging cursor */
+.scrollX{ cursor: grab; }
+.scrollX.dragging{ cursor: grabbing; }
+
+/* slides container dragging cursor */
+.slides-container{ cursor: grab; }
+.slides-container.dragging{ cursor: grabbing; }
+
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 3rem;
+    color: var(--white01--);
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 0.5rem 1rem;
+    border-radius: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.close:hover {
+    background-color: rgba(0, 0, 0, 0.95);
+    color: var(--gold01--);
+}
+
+.aboutBarbers{
+    display: flex;
+    width: 100%;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100dvh;
+    box-shadow: 0 0 10px 5px #000;
+    position: relative;
+    padding: 3rem 0;
+
+    background-image: url(./imgs/barbearia/barbearia\ \(1\).png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    h2{
+        z-index: 1;
+        background-color: #1b1b1b44;
+        border: 2px solid white;
+        box-shadow: 0 0 25px 1px var(--white01--), inset 0 0 10px 1px var(--white01--);
+        padding: .5rem;
+        border-radius: 1.4rem;
+        position: relative;
+        top: 0;
+        margin-bottom: 2rem;
+    }
+}
+
+.barbersContainer{
+    display: flex;
+    justify-content: flex-start;
+    gap: 5rem;
+    overflow-x: auto;
+    width: 100%;
+    padding: 4rem;
+    scroll-behavior: smooth;
+    z-index: 1;
+}
+
+.barbersContainer::-webkit-scrollbar{
+    height: 8px;
+}
+
+.barbersContainer::-webkit-scrollbar-track{
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.barbersContainer::-webkit-scrollbar-thumb{
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+}
+
+.barbersContainer::-webkit-scrollbar-thumb:hover{
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.aboutBarbersFilter{
+    backdrop-filter: blur(1rem) brightness(80%);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+}
+
+.barber{
+    display: flex;
+    z-index: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 30rem;
+    min-width: 30rem;
+    font-size: 1.6rem;
+    padding: 1rem;
+    border-radius: .8rem;
+    box-shadow: 0 0 25px 1px var(--white01--), inset 0 0 5px 1px var(--white01--);
+
+    img{
+        max-width: 18rem;
+        width: 100%;
+        max-height: 18rem;
+        height: 100%;
+        border-radius: 50%;
+        box-shadow: 0 0 20px 1px var(--white01--);
+    }
+
+    h3{
+        font-size: 1.8rem;
+    }
+
+    .socialMedias{
+        display: flex;
+        gap: 1rem;
+        .mediaBtn{
+            width: 2.8rem;
+            background-color: white;
+            border-radius: .8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.5s;
+            svg{
+                width: 100%;
+            }
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+        .whatsappMediaBarber:hover{
+            background-color: #25d366;
+            fill: white;
+        }
+        .instagramMediaBarber:hover{
+            background: #833AB4;
+            fill: white;
+            background: linear-gradient(343deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+        }
+    }
+}
+
+
+
+/* WhatsApp Button */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 5rem;
+    height: 5rem;
+    padding: .5rem;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.whatsapp-btn:hover {
+    background-color: #1ead51;
+    transform: scale(1.1);
+    box-shadow: 0 0px 16px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-btn svg {
+    width: 100%;
+    height: 100%;
+    fill: white;
+}
