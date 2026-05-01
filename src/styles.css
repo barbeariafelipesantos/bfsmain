@@ -165,7 +165,7 @@ footer{
     h2{
         font-size: 1.8rem;
         position: absolute;
-        bottom: 2rem;
+        bottom: 2.5rem;
         left: 1rem;
         background-color: #00000063;
         padding: 10px;
@@ -174,21 +174,19 @@ footer{
 }
 
 .slide1{
-    background-image: url("./imgs/barbearia/barbearia\ \(1\).png");
+    video{
+        width: 100%;
+        height: 120%;
+    }
 }
 
 .slide2{
-    background-image: url("./imgs/patrocinios/patrocionioespaços.jpeg");
-}
-
-.slide3{
-    background-image: url("./imgs/patrocinios/patrocioniocamisa.jpeg");
+    background-image: url("./imgs/slider/planosmensais.jpeg");
 }
 
 /* Show the slide when its checkbox is checked */
 #slide1:checked ~ .slides-container .slide1,
-#slide2:checked ~ .slides-container .slide2,
-#slide3:checked ~ .slides-container .slide3 {
+#slide2:checked ~ .slides-container .slide2 {
     opacity: 1;
     z-index: 1;
 }
@@ -219,8 +217,7 @@ footer{
 }
 
 #slide1:checked ~ .slider-dots .dot1,
-#slide2:checked ~ .slider-dots .dot2,
-#slide3:checked ~ .slider-dots .dot3 {
+#slide2:checked ~ .slider-dots .dot2 {
     background-color: var(--gold01--);
     border-color: var(--white01--);
 }
@@ -546,7 +543,7 @@ h2{
     position: relative;
     padding: 3rem 0;
 
-    background-image: url(./imgs/barbearia/barbearia\ \(1\).png);
+    background-image: url(./imgs/slider/aboutBarbersbg.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -663,7 +660,7 @@ h2{
 
 
 /* WhatsApp Button */
-.whatsapp-btn {
+.whatsapp-btn, .instagram-btn {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
@@ -681,13 +678,18 @@ h2{
     z-index: 999;
 }
 
-.whatsapp-btn:hover {
-    background-color: #1ead51;
+.instagram-btn{
+    bottom: 7.5rem;
+    background: linear-gradient(343deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+
+}
+
+.whatsapp-btn:hover, .instagram-btn:hover {
     transform: scale(1.1);
     box-shadow: 0 0px 16px rgba(37, 211, 102, 0.3);
 }
 
-.whatsapp-btn svg {
+.whatsapp-btn svg, .instagram-btn svg {
     width: 100%;
     height: 100%;
     fill: white;

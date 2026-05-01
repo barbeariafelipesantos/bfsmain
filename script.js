@@ -47,10 +47,10 @@ const slidesContainer = document.querySelector('.slides-container');
 let currentSlide = 1;
 
 setInterval(() => {
-    const nextSlide = currentSlide === 3 ? 1 : currentSlide + 1;
+    const nextSlide = currentSlide === 2 ? 1 : currentSlide + 1;
     document.getElementById(`slide${nextSlide}`).checked = true;
     currentSlide = nextSlide;
-}, 15000);
+}, 18000);
 
 // Drag-to-navigate for slides container
 let isDown = false;
@@ -84,12 +84,12 @@ slidesContainer.addEventListener('mouseup', (e) => {
     if (Math.abs(dragDistance) > dragThreshold) {
         if (dragDistance > 0) {
             // Dragged left, show next slide
-            const nextSlide = currentSlide === 3 ? 1 : currentSlide + 1;
+            const nextSlide = currentSlide === 2 ? 1 : currentSlide + 1;
             document.getElementById(`slide${nextSlide}`).checked = true;
             currentSlide = nextSlide;
         } else {
             // Dragged right, show previous slide
-            const prevSlide = currentSlide === 1 ? 3 : currentSlide - 1;
+            const prevSlide = currentSlide === 1 ? 2 : currentSlide - 1;
             document.getElementById(`slide${prevSlide}`).checked = true;
             currentSlide = prevSlide;
         }
